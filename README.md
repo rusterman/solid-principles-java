@@ -1,7 +1,7 @@
 # SOLID Principles in Java — Theory, Examples & Exercises
 
 <p align="center">
-  <img src="images/solid.webp" alt="SOLID Principles" width="280">
+  <img src="images/solid.webp" alt="SOLID Principles" width="600">
 </p>
 
 A structured set of Java exercises on the **SOLID** principles, organized by principle. Each
