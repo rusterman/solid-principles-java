@@ -1,6 +1,6 @@
 # 6 — Complete Practice Exercise: E-Commerce Checkout Refactor
 
-![SOLID Principles](../images/solid.webp)
+<img src="../images/solid.webp" alt="SOLID Principles" width="100%">
 
 ## 🎯 Goal
 
