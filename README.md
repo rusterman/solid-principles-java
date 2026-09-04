@@ -4,15 +4,13 @@
   <img src="images/solid.webp" alt="SOLID Principles" width="600">
 </p>
 
-A structured set of Java exercises on the **SOLID** principles, organized by principle. Each
-numbered lesson folder contains a **theory README**, worked **examples** (a "bad" version and
-a "good," refactored version you can read and run), and its own **practice exercise** you
-solve yourself. A final [Complete Practice Exercise](./6-COMPLETE-PRACTICE-EXERCISE/) ties all
-five principles into one realistic system. Written for developers who already know OOP basics
-(classes, interfaces, inheritance) and are ready to learn how to *design* with them.
+A structured set of Java exercises on the **SOLID** principles. Each lesson pairs theory with
+runnable bad/good examples and its own practice exercise, capped off by a
+[Complete Practice Exercise](./6-COMPLETE-PRACTICE-EXERCISE/) that combines all five. For
+developers who already know OOP basics and are ready to learn how to *design* with them.
 
-This repository is the SOLID chapter of a broader **Code Quality** track (Code Review, Clean
-Code, SOLID, Design Patterns) — it focuses on SOLID specifically, in depth.
+Part of a broader **Code Quality** track (Code Review, Clean Code, SOLID, Design Patterns) —
+this repo covers SOLID in depth.
 
 ## Philosophy
 
