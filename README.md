@@ -89,37 +89,6 @@ Depend on abstractions, not concrete classes. Injecting a `MessageService` inter
 Refactor a monolithic e-commerce checkout system by applying all five principles together, one
 stage at a time.
 
-## Structure
-
-```csv
-images/                                overview image used by this root README
-1-SINGLE-RESPONSIBILITY-PRINCIPLE/     one reason to change, per class
-2-OPEN-CLOSED-PRINCIPLE/               extend behavior without editing what already works
-3-LISKOV-SUBSTITUTION-PRINCIPLE/       subtypes that never break their base type's promises
-4-INTERFACE-SEGREGATION-PRINCIPLE/     small, focused interfaces over one fat interface
-5-DEPENDENCY-INVERSION-PRINCIPLE/      depend on abstractions, inject the concrete details
-6-COMPLETE-PRACTICE-EXERCISE/          all five principles applied to one system, step by step
-```
-
-Each principle folder follows the same shape:
-
-```csv
-N-PRINCIPLE-NAME/
-├── README.md                  theory: the idea, a bad example, a good example, how to spot it
-├── examples/
-│   ├── 01-bad-example/Main.java    the violation, runnable
-│   └── 02-good-example/Main.java   the fix, runnable
-└── exercise/
-    ├── README.md                   a fresh scenario: goal, task, acceptance criteria
-    ├── Starter.java                the code you refactor yourself
-    └── solution/                   gitignored — not pushed to GitHub, see below
-```
-
-> **No solutions are published.** Every `solution/`/`solutions/` folder — under each
-> `exercise/`, and under `6-COMPLETE-PRACTICE-EXERCISE/` — is listed in [`.gitignore`](.gitignore)
-> and never leaves a contributor's machine. See
-> [Submitting your solutions](#submitting-your-solutions).
-
 ## Setup and requirements
 
 ### A Java Development Kit (JDK)
