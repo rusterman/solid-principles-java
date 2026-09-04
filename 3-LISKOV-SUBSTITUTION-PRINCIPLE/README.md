@@ -1,6 +1,6 @@
 # 3 — Liskov Substitution Principle (LSP)
 
-![Liskov Substitution Principle](../lsp.webp)
+![Liskov Substitution Principle](images/lsp.webp)
 
 > Subtypes must be substitutable for their base types, without breaking the correctness of
 > the program.

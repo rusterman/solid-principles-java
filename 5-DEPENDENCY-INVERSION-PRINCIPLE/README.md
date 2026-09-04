@@ -1,6 +1,6 @@
 # 5 — Dependency Inversion Principle (DIP)
 
-![Dependency Inversion Principle](../dip.webp)
+![Dependency Inversion Principle](images/dip.webp)
 
 > Depend on abstractions, not on concrete implementations.
 

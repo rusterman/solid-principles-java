@@ -1,6 +1,6 @@
 # 6 — Capstone Exercise: E-Commerce Checkout Refactor
 
-![SOLID Principles](../solid.webp)
+![SOLID Principles](images/solid.webp)
 
 ## 🎯 Goal
 

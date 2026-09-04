@@ -1,6 +1,6 @@
 # 4 — Interface Segregation Principle (ISP)
 
-![Interface Segregation Principle](../isp.png)
+![Interface Segregation Principle](images/isp.png)
 
 > Clients should not be forced to depend on methods they do not use.
 

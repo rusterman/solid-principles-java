@@ -1,6 +1,6 @@
 # SOLID Principles in Java — Theory, Examples & Exercises
 
-![SOLID Principles](solid.webp)
+![SOLID Principles](images/solid.webp)
 
 A structured set of Java exercises on the **SOLID** principles, organized by principle. Each
 numbered lesson folder contains a **theory README**, worked **examples** (a "bad" version and
@@ -13,6 +13,17 @@ This repository is the SOLID chapter of a broader **Code Quality** track (Code R
 Code, SOLID, Design Patterns) — it focuses on SOLID specifically, in depth.
 
 ## Philosophy
+
+Most resources don't give you stepwise, progressive exercises that actually build practice
+with SOLID — they explain the theory and assume the rest will take care of itself once you're
+working on real projects. That's often not true, or at best it takes a very long time: on a
+real project you absorb SOLID indirectly, tangled up with operational concerns and tech-stack
+noise, not through focused, deliberate practice. Without that structure, it's easy to stay
+confused about SOLID for far longer than necessary.
+
+This repo exists to fix that: each principle gets its own theory, a bad/good example pair you
+run yourself, and a shared capstone exercise that forces you to actually *apply* all five,
+deliberately, before you ever have to reach for them under deadline pressure on the job.
 
 **SOLID is not a checklist to memorize. It's a set of answers to "why did this code become
 hard to change?"**
@@ -77,19 +88,21 @@ at a time — with reference solutions for each stage.
 ## Structure
 
 ```csv
-1-SINGLE-RESPONSIBILITY-PRINCIPLE/   one reason to change, per class
-2-OPEN-CLOSED-PRINCIPLE/             extend behavior without editing what already works
-3-LISKOV-SUBSTITUTION-PRINCIPLE/     subtypes that never break their base type's promises
-4-INTERFACE-SEGREGATION-PRINCIPLE/   small, focused interfaces over one fat interface
-5-DEPENDENCY-INVERSION-PRINCIPLE/    depend on abstractions, inject the concrete details
-6-CAPSTONE-EXERCISE/                 all five principles applied to one system, step by step
+images/                               overview image used by this root README
+1-SINGLE-RESPONSIBILITY-PRINCIPLE/    one reason to change, per class
+2-OPEN-CLOSED-PRINCIPLE/              extend behavior without editing what already works
+3-LISKOV-SUBSTITUTION-PRINCIPLE/      subtypes that never break their base type's promises
+4-INTERFACE-SEGREGATION-PRINCIPLE/    small, focused interfaces over one fat interface
+5-DEPENDENCY-INVERSION-PRINCIPLE/     depend on abstractions, inject the concrete details
+6-CAPSTONE-EXERCISE/                  all five principles applied to one system, step by step
 ```
 
-Each principle folder follows the same shape:
+Each principle folder follows the same shape, with its own `images/` folder:
 
 ```csv
 N-PRINCIPLE-NAME/
 ├── README.md                  theory: the idea, a bad example, a good example, how to spot it
+├── images/                    the diagram used by this folder's README
 └── examples/
     ├── 01-bad-example/Main.java    the violation, runnable
     └── 02-good-example/Main.java   the fix, runnable
@@ -125,6 +138,34 @@ java -version
 javac -version
 ```
 
+## Getting started
+
+New to Git/GitHub/forking? The prerequisite
+[cpp-oop-examples-and-exercises](https://github.com/rusterman/cpp-oop-examples-and-exercises#setup-and-requirements)
+repo walks through what each of those is. The short version, for this repo:
+
+### 1. Fork the repository
+
+Click **Fork** on [github.com/rusterman/solid-principles-java](https://github.com/rusterman/solid-principles-java)
+to create your own copy under your GitHub account. You'll work and commit inside your fork,
+not the original.
+
+### 2. Clone your fork
+
+Replace `<your-username>` with your GitHub username:
+
+```bash
+git clone https://github.com/<your-username>/solid-principles-java.git
+cd solid-principles-java
+```
+
+Optionally, add the original repo as `upstream` so you can pull in future updates:
+
+```bash
+git remote add upstream https://github.com/rusterman/solid-principles-java.git
+git remote -v   # origin = your fork, upstream = original
+```
+
 ## How to work through this guide
 
 1. **Go in lesson order** — `1-SINGLE-RESPONSIBILITY-PRINCIPLE` → ... →
@@ -152,6 +193,24 @@ javac Main.java && java Main
   change, you already understand the principle behind the fix.
 - **Don't skip the capstone.** The individual lessons show you *one* principle in isolation;
   the exercise is where you practice recognizing *which* principle a real problem needs.
+
+## Submitting your solutions
+
+Use one branch per person, named after your GitHub username, so your capstone attempt is easy
+to find and never collides with anyone else's fork history:
+
+| Step | Command |
+|------|---------|
+| Create your solution branch | `git checkout -b solutions/<your-username>` |
+| Work locally, commit per stage | `git add .`<br>`git commit -m "capstone: stage 1 - SRP refactor"` |
+| Push your branch to your fork | `git push -u origin solutions/<your-username>` |
+
+Replace `<your-username>` with your actual GitHub username. Commit each capstone stage
+separately (`capstone: stage 1 - SRP`, `capstone: stage 2 - OCP`, ...) so your progress is easy
+to follow, and try each stage yourself before opening the matching file in
+[`6-CAPSTONE-EXERCISE/solutions/`](./6-CAPSTONE-EXERCISE/solutions/). Once pushed, you can open
+a pull request from `solutions/<your-username>` into your own fork's `main` for a clean,
+reviewable diff of your work.
 
 ---
 

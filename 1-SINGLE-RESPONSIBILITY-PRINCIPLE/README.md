@@ -1,6 +1,6 @@
 # 1 — Single Responsibility Principle (SRP)
 
-![Single Responsibility Principle](../srp.webp)
+![Single Responsibility Principle](images/srp.webp)
 
 > A class should have only one reason to change.
 
