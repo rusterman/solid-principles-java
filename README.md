@@ -87,7 +87,7 @@ Depend on abstractions, not concrete classes. Injecting a `MessageService` inter
 ### [6. Complete Practice Exercise →](./6-COMPLETE-PRACTICE-EXERCISE/)
 
 Refactor a monolithic e-commerce checkout system by applying all five principles together, one
-stage at a time — with reference solutions for each stage.
+stage at a time.
 
 ## Structure
 
@@ -111,8 +111,14 @@ N-PRINCIPLE-NAME/
 │   └── 02-good-example/Main.java   the fix, runnable
 └── exercise/
     ├── README.md                   a fresh scenario: goal, task, acceptance criteria
-    └── Starter.java                the code you refactor yourself (no solution provided)
+    ├── Starter.java                the code you refactor yourself
+    └── solution/                   gitignored — not pushed to GitHub, see below
 ```
+
+> **No solutions are published.** Every `solution/`/`solutions/` folder — under each
+> `exercise/`, and under `6-COMPLETE-PRACTICE-EXERCISE/` — is listed in [`.gitignore`](.gitignore)
+> and never leaves a contributor's machine. See
+> [Submitting your solutions](#submitting-your-solutions).
 
 ## Setup and requirements
 
@@ -182,9 +188,10 @@ git remote -v   # origin = your fork, upstream = original
 3. **Run both examples.** Don't just read the diff — compile and execute `01-bad-example` and
    `02-good-example`, then change something and re-run it.
 4. **Do the lesson's practice exercise** in `exercise/` before moving on — a *new* scenario,
-   with no reference solution, so you're actually applying the idea, not retyping it.
-5. **Finish with the Complete Practice Exercise.** Attempt each refactor stage yourself before
-   opening the matching file under `6-COMPLETE-PRACTICE-EXERCISE/solutions/`.
+   solved on your own (no reference solution ships in this repo — see
+   [Submitting your solutions](#submitting-your-solutions) below).
+5. **Finish with the Complete Practice Exercise.** Attempt each of its four refactor stages
+   yourself, the same way.
 
 ### Build & run any example or exercise
 
@@ -229,10 +236,11 @@ with a clear message:
 - Complete Practice Exercise stages: `final-exercise: stage <N> - <short description>` (e.g.
   `final-exercise: stage 1 - SRP refactor`)
 
-Try each exercise yourself before opening its reference material (there is none for the
-per-principle exercises — that's the point; the
-[`6-COMPLETE-PRACTICE-EXERCISE/solutions/`](./6-COMPLETE-PRACTICE-EXERCISE/solutions/) folder
-does have reference solutions, stage by stage). Once pushed, you can open a pull request from
+**No answer key ships in this repo.** Every `exercise/` folder and the
+`6-COMPLETE-PRACTICE-EXERCISE/` stages are meant to be solved by you — any `solution/` or
+`solutions/` folder is excluded via [`.gitignore`](.gitignore) so it never reaches GitHub, on
+this repo or your fork. Once you've genuinely attempted an exercise, compare notes with a
+classmate, a code reviewer, or an LLM. Once pushed, you can open a pull request from
 `solutions/<your-username>` into your own fork's `main` for a clean, reviewable diff of your
 work.
 

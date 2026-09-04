@@ -47,7 +47,7 @@ You're building a backend system that must support:
 
 ## ❌ Step 0 — the starting point
 
-This is your starter code — see [`solutions/0-starter-challenge.java`](solutions/0-starter-challenge.java):
+This is your starter code — see [`Starter.java`](Starter.java):
 
 ```java
 class OrderService {
@@ -106,9 +106,7 @@ maintain.
 
 ## 🛠️ Your task
 
-Refactor `OrderService` in five stages, one principle at a time. Try each stage yourself
-**before** opening the matching file in [`solutions/`](solutions/) — the value of this
-exercise is in the struggle, not the answer key.
+Refactor `OrderService` in five stages, one principle at a time.
 
 | Stage | Principle | What to do |
 |-------|-----------|-------------|
@@ -117,15 +115,11 @@ exercise is in the struggle, not the answer key.
 | 3 | **LSP + ISP** | Add a separate `RefundablePayment` interface. Only payment types that truly support refunds implement it (crypto/bank don't) — so an unsupported refund is a compile-time impossibility, not a runtime exception. |
 | 4 | **DIP** | Make every collaborator of `OrderService` an interface (`DiscountPolicy`, `OrderRepository`, `NotificationService`, `Logger`, `PaymentService`), injected through the constructor. `OrderService` should not construct anything itself. |
 
-Each stage's reference solution is numbered to match:
-
-| File | Stage |
-|------|-------|
-| [`0-starter-challenge.java`](solutions/0-starter-challenge.java) | The bad design above |
-| [`1-srp-solution.java`](solutions/1-srp-solution.java) | After applying SRP |
-| [`2-ocp-solution.java`](solutions/2-ocp-solution.java) | After applying SRP + OCP |
-| [`3-lsp-isp-solution.java`](solutions/3-lsp-isp-solution.java) | After applying SRP + OCP + LSP + ISP |
-| [`4-dip-final-solution.java`](solutions/4-dip-final-solution.java) | Final design — all five principles applied |
+> **No answer key in this repo.** Like every other exercise here, the reference solution for
+> each stage isn't published — `solutions/` is listed in [`.gitignore`](../.gitignore), so it
+> never leaves the maintainer's machine. The value of this exercise is in the struggle, not in
+> reading someone else's `1-srp-solution.java`. Work through it, then compare notes with
+> a classmate, a code reviewer, or an LLM once you're done.
 
 ## ✅ Self-check questions
 
@@ -137,15 +131,12 @@ After each stage, ask:
 - Is there any class doing two unrelated jobs at once?
 - Could a caller pass in something that *compiles* but *breaks* at runtime?
 
-## Build & run a solution stage
+## Build & run the starter
 
 ```sh
-cd solutions
-javac 4-dip-final-solution.java -d /tmp/out
+javac Starter.java -d /tmp/out
 java -cp /tmp/out Main
 ```
-
-(Each file is self-contained with its own `Main` class, so compile/run one file at a time.)
 
 ## Previous
 
