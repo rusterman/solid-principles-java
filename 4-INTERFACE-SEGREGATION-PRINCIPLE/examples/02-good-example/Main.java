@@ -1,48 +1,56 @@
 // ✅ GOOD: split the fat interface into small, focused ones.
-// Each class implements only what it can genuinely support.
-interface Workable {
-    void work();
+// Each device implements only what it can genuinely support.
+interface Printer {
+    void print(String document);
 }
 
-interface Eatable {
-    void eat();
+interface Scanner {
+    void scan(String document);
 }
 
-class Human implements Workable, Eatable {
-    public void work() {
-        System.out.println("Working");
-    }
-
-    public void eat() {
-        System.out.println("Eating");
-    }
+interface FaxMachine {
+    void fax(String document);
 }
 
-class Robot implements Workable {
-    public void work() {
-        System.out.println("Working");
+class OldPrinter implements Printer {
+    public void print(String document) {
+        System.out.println("Printing: " + document);
     }
-    // No eat() to fake — Robot simply isn't Eatable.
+    // No scan()/fax() to fake — OldPrinter simply isn't a Scanner or FaxMachine.
+}
+
+class SmartOfficeMachine implements Printer, Scanner, FaxMachine {
+    public void print(String document) {
+        System.out.println("Printing: " + document);
+    }
+
+    public void scan(String document) {
+        System.out.println("Scanning: " + document);
+    }
+
+    public void fax(String document) {
+        System.out.println("Faxing: " + document);
+    }
 }
 
 public class Main {
-    static void putToWork(Workable worker) {
-        worker.work();
+    static void printDocument(Printer printer, String doc) {
+        printer.print(doc);
     }
 
     public static void main(String[] args) {
-        putToWork(new Human());
-        putToWork(new Robot());
+        printDocument(new OldPrinter(), "resume.pdf");
+        printDocument(new SmartOfficeMachine(), "contract.pdf");
 
-        Eatable human = new Human();
-        human.eat();
-        // Eatable robot = new Robot(); // ❌ won't compile — Robot isn't Eatable
+        Scanner scanner = new SmartOfficeMachine();
+        scanner.scan("contract.pdf");
+        // Scanner brokenScanner = new OldPrinter(); // ❌ won't compile — OldPrinter isn't a Scanner
     }
 }
 
 /*
  * Why this is better:
- *  - No class is forced to implement a method that doesn't apply to it
- *  - Interfaces describe real capabilities: Workable, Eatable — nothing more
- *  - Adding Sleepable later only affects classes that actually sleep
+ *  - No device is forced to implement a method that doesn't apply to it
+ *  - Interfaces describe real capabilities: Printer, Scanner, FaxMachine — nothing more
+ *  - Adding a Stapler capability later only affects devices that actually staple
  */

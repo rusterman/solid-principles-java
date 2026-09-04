@@ -1,33 +1,53 @@
-// ❌ BAD: Penguin IS-A Bird, but it cannot honor Bird's contract.
-// Anywhere code expects "a Bird that can fly()", a Penguin blows it up.
-class Bird {
-    public void fly() {
-        System.out.println("Flying");
+// ❌ BAD: FixedDepositAccount IS-A BankAccount, but it cannot honor
+// BankAccount's contract. Anywhere code expects "an account you can withdraw
+// from", a FixedDepositAccount blows it up.
+class BankAccount {
+    protected double balance;
+
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited: " + amount + ", balance: " + balance);
+    }
+
+    public void withdraw(double amount) {
+        balance -= amount;
+        System.out.println("Withdrew: " + amount + ", balance: " + balance);
+    }
+
+    public double getBalance() {
+        return balance;
     }
 }
 
-class Penguin extends Bird {
+class FixedDepositAccount extends BankAccount {
     @Override
-    public void fly() {
-        throw new UnsupportedOperationException("Penguins can't fly!");
+    public void withdraw(double amount) {
+        throw new UnsupportedOperationException("Cannot withdraw before maturity date");
     }
 }
 
 public class Main {
-    static void letItFly(Bird bird) {
-        bird.fly(); // works for Bird and Sparrow-like birds... but not for Penguin
+    // Code written against BankAccount reasonably assumes withdraw() works.
+    static void payMonthlyBill(BankAccount account, double amount) {
+        account.withdraw(amount);
     }
 
     public static void main(String[] args) {
-        letItFly(new Bird());
-        letItFly(new Penguin()); // 💥 throws at runtime
+        BankAccount savings = new BankAccount();
+        savings.deposit(1000);
+        payMonthlyBill(savings, 200);
+
+        BankAccount fixedDeposit = new FixedDepositAccount();
+        fixedDeposit.deposit(5000);
+        payMonthlyBill(fixedDeposit, 200); // 💥 throws at runtime
     }
 }
 
 /*
  * Problems with this design:
- *  - Penguin is substitutable in the TYPE SYSTEM but not in BEHAVIOR
- *  - Any code written against Bird now has to special-case Penguin
- *  - The inheritance relationship models "what a Penguin technically is",
- *    not "what a Penguin can actually do"
+ *  - FixedDepositAccount is substitutable in the TYPE SYSTEM but not in BEHAVIOR
+ *  - Any code that pays a bill, transfers funds, or processes a refund by calling
+ *    withdraw() now has to special-case FixedDepositAccount
+ *  - The inheritance relationship models "what a FixedDepositAccount technically is",
+ *    not "what a FixedDepositAccount can actually do"
  */

@@ -15,56 +15,67 @@ ISP is basically SRP applied to interfaces: one interface, one cohesive capabili
 
 ## Use case
 
-A `Worker` interface for a factory system that must represent both humans and robots:
+An office-equipment app models every device with one `MultiFunctionDevice` interface — but
+not every device in the fleet is a multi-function machine:
 
-- Humans **work** and **eat** (need breaks, meals)
-- Robots only **work** — they never eat
+- A modern all-in-one machine can **print**, **scan**, and **fax**
+- An old printer can only **print**
 
 ## ❌ Bad example
 
 ```java
-interface Worker {
-    void work();
-    void eat();
+interface MultiFunctionDevice {
+    void print(String document);
+    void scan(String document);
+    void fax(String document);
 }
 
-class Robot implements Worker {
-    public void work() {
-        System.out.println("Working");
+class OldPrinter implements MultiFunctionDevice {
+    public void print(String document) {
+        System.out.println("Printing: " + document);
     }
 
-    public void eat() {
-        throw new UnsupportedOperationException();
+    public void scan(String document) {
+        throw new UnsupportedOperationException("This printer can't scan");
+    }
+
+    public void fax(String document) {
+        throw new UnsupportedOperationException("This printer can't fax");
     }
 }
 ```
 
-👉 `Robot` is forced to implement `eat()` even though it's meaningless for a robot — the only
-options are to fake it or throw, and either one is a design smell.
+👉 `OldPrinter` is forced to implement `scan()` and `fax()` even though neither is meaningful
+for it — the only options are to fake them or throw, and either one is a design smell.
 
 ## ✅ Good example
 
 ```java
-interface Workable {
-    void work();
+interface Printer {
+    void print(String document);
 }
 
-interface Eatable {
-    void eat();
+interface Scanner {
+    void scan(String document);
 }
 
-class Human implements Workable, Eatable {
-    public void work() { System.out.println("Working"); }
-    public void eat() { System.out.println("Eating"); }
+interface FaxMachine {
+    void fax(String document);
 }
 
-class Robot implements Workable {
-    public void work() { System.out.println("Working"); }
+class OldPrinter implements Printer {
+    public void print(String document) { System.out.println("Printing: " + document); }
+}
+
+class SmartOfficeMachine implements Printer, Scanner, FaxMachine {
+    public void print(String document) { System.out.println("Printing: " + document); }
+    public void scan(String document) { System.out.println("Scanning: " + document); }
+    public void fax(String document) { System.out.println("Faxing: " + document); }
 }
 ```
 
-👉 `Robot` implements only what it can actually do. Adding `Sleepable` later won't force a
-single change onto `Robot`.
+👉 `OldPrinter` implements only what it can actually do. Adding a `Stapler` capability later
+won't force a single change onto it.
 
 ## How to spot a violation
 
@@ -83,8 +94,8 @@ do everything.
 
 | # | Focus |
 |---|-------|
-| 01 | One `Worker` interface forcing `Robot` to fake `eat()` (violation) |
-| 02 | Split into `Workable` / `Eatable` (fixed) |
+| 01 | One `MultiFunctionDevice` interface forcing `OldPrinter` to fake `scan()`/`fax()` (violation) |
+| 02 | Split into `Printer` / `Scanner` / `FaxMachine` (fixed) |
 
 ## Build & run
 
@@ -102,10 +113,10 @@ javac Main.java && java Main
 
 Once the examples above make sense, apply ISP yourself on a fresh scenario:
 
-### [Exercise: Office Printer Fleet →](./exercise/)
+### [Exercise: Employee Payroll System →](./exercise/)
 
-Split a fat `MultiFunctionDevice` interface so a print-only device is never forced to fake
-scanning or faxing.
+Split a fat `Employee` interface so a `Contractor` is never forced to fake paid leave they
+don't actually get.
 
 ## Next
 

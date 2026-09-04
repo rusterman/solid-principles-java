@@ -1,31 +1,31 @@
-// ISP Practice Exercise — starter code. OldPrinter is forced to fake scan()
-// and fax(). Split MultiFunctionDevice into focused interfaces instead.
+// ISP Practice Exercise — starter code. Contractor is forced to fake paid
+// leave and health insurance. Split Employee into focused interfaces instead.
 // See README.md in this folder for the full task and requirements.
 
-interface MultiFunctionDevice {
-    void print(String document);
-    void scan(String document);
-    void fax(String document);
+interface Employee {
+    double calculateSalary();
+    void takePaidLeave(int days);
+    void enrollInHealthInsurance();
 }
 
-class OldPrinter implements MultiFunctionDevice {
-    public void print(String document) {
-        System.out.println("Printing: " + document);
+class Contractor implements Employee {
+    public double calculateSalary() {
+        return 5000.0; // flat contract rate
     }
 
-    public void scan(String document) {
-        throw new UnsupportedOperationException("This printer can't scan");
+    public void takePaidLeave(int days) {
+        throw new UnsupportedOperationException("Contractors don't get paid leave");
     }
 
-    public void fax(String document) {
-        throw new UnsupportedOperationException("This printer can't fax");
+    public void enrollInHealthInsurance() {
+        throw new UnsupportedOperationException("Contractors aren't eligible for company insurance");
     }
 }
 
 public class Starter {
     public static void main(String[] args) {
-        MultiFunctionDevice printer = new OldPrinter();
-        printer.print("resume.pdf");
-        printer.scan("resume.pdf"); // 💥 throws at runtime
+        Employee contractor = new Contractor();
+        System.out.println("Salary: " + contractor.calculateSalary());
+        contractor.takePaidLeave(2); // 💥 throws at runtime
     }
 }

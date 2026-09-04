@@ -70,13 +70,14 @@ a `Payment` interface — then practicing it yourself on a customer discount cal
 
 ### [3. Liskov Substitution Principle →](./3-LISKOV-SUBSTITUTION-PRINCIPLE/)
 
-Subtypes must be safely substitutable for their base type. The classic `Bird`/`Penguin`
-example — then practicing it yourself on the equally classic `Square`/`Rectangle` problem.
+Subtypes must be safely substitutable for their base type. A `FixedDepositAccount` that can't
+honor `withdraw()` — then practicing it yourself on the classic `Square`/`Rectangle` problem.
 
 ### [4. Interface Segregation Principle →](./4-INTERFACE-SEGREGATION-PRINCIPLE/)
 
-Don't force classes to implement methods they don't need. Splitting a fat `Worker` interface
-into `Workable` and `Eatable` — then practicing it yourself on an office printer fleet.
+Don't force classes to implement methods they don't need. Splitting a fat
+`MultiFunctionDevice` interface into `Printer`, `Scanner`, and `FaxMachine` — then practicing
+it yourself on an employee payroll system.
 
 ### [5. Dependency Inversion Principle →](./5-DEPENDENCY-INVERSION-PRINCIPLE/)
 

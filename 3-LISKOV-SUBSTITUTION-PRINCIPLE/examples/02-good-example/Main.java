@@ -1,45 +1,72 @@
-// ✅ GOOD: flight is pulled out into its own capability. Bird no longer
-// promises something not every bird can deliver, so every substitution is safe.
-class Bird {
-    // common bird behavior only: eating, making a sound, etc.
+// ✅ GOOD: withdrawal is pulled out into its own capability. BankAccount no
+// longer promises something not every account can deliver, so every
+// substitution is safe.
+interface Account {
+    void deposit(double amount);
+    double getBalance();
 }
 
-interface FlyingBird {
-    void fly();
+interface Withdrawable {
+    void withdraw(double amount);
 }
 
-class Sparrow extends Bird implements FlyingBird {
-    public void fly() {
-        System.out.println("Flying");
+class SavingsAccount implements Account, Withdrawable {
+    private double balance;
+
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited: " + amount + ", balance: " + balance);
+    }
+
+    public void withdraw(double amount) {
+        balance -= amount;
+        System.out.println("Withdrew: " + amount + ", balance: " + balance);
+    }
+
+    public double getBalance() {
+        return balance;
     }
 }
 
-class Penguin extends Bird {
-    // no fly() — and no obligation to have one
-    public void swim() {
-        System.out.println("Swimming");
+class FixedDepositAccount implements Account {
+    private double balance;
+
+    public void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited: " + amount + ", balance: " + balance);
     }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    // no withdraw() — and no obligation to have one
 }
 
 public class Main {
-    // Code that needs flight asks for FlyingBird, not Bird —
-    // so only birds that CAN fly are ever passed in.
-    static void letItFly(FlyingBird bird) {
-        bird.fly();
+    // Code that needs to withdraw asks for Withdrawable, not Account —
+    // so only accounts that CAN be withdrawn from are ever passed in.
+    static void payMonthlyBill(Withdrawable account, double amount) {
+        account.withdraw(amount);
     }
 
     public static void main(String[] args) {
-        letItFly(new Sparrow()); // ✔️ compiles and works
-        // letItFly(new Penguin()); // ❌ won't even compile — caught before runtime!
+        SavingsAccount savings = new SavingsAccount();
+        savings.deposit(1000);
+        payMonthlyBill(savings, 200); // ✔️ compiles and works
 
-        Penguin penguin = new Penguin();
-        penguin.swim();
+        FixedDepositAccount fixedDeposit = new FixedDepositAccount();
+        fixedDeposit.deposit(5000);
+        // payMonthlyBill(fixedDeposit, 200); // ❌ won't even compile — caught before runtime!
+
+        System.out.println("Fixed deposit balance: " + fixedDeposit.getBalance());
     }
 }
 
 /*
  * Why this is better:
- *  - Every FlyingBird passed to letItFly() is guaranteed to actually fly
- *  - Penguin is still a Bird — it just isn't forced into a contract it can't keep
- *  - The compiler catches the mistake instead of the user hitting a runtime exception
+ *  - Every Withdrawable passed to payMonthlyBill() is guaranteed to actually support it
+ *  - FixedDepositAccount is still an Account — it just isn't forced into a contract
+ *    it can't keep
+ *  - The compiler catches the mistake instead of a customer hitting a runtime exception
  */
