@@ -1,6 +1,6 @@
 # 5 — Dependency Inversion Principle (DIP)
 
-![Dependency Inversion Principle](images/dip.webp)
+![Dependency Inversion Principle](../images/dip.webp)
 
 > Depend on abstractions, not on concrete implementations.
 
@@ -122,6 +122,15 @@ cd examples/02-good-example
 javac Main.java && java Main
 ```
 
+## 🏋️ Practice exercise
+
+Once the examples above make sense, apply DIP yourself on a fresh scenario:
+
+### [Exercise: Swappable Order Storage →](./exercise/)
+
+Free an `OrderProcessor` from constructing its own database, so storage can be swapped —
+including for a fast in-memory test double — without touching `OrderProcessor` at all.
+
 ## Big picture — how the five work together
 
 - **SRP** → clean structure (one reason to change, per class)
@@ -131,8 +140,8 @@ javac Main.java && java Main
 - **DIP** → loose coupling (depend on abstractions, inject the details)
 
 Together: scalable, testable, maintainable systems. See them applied together, end-to-end,
-in the [Capstone Exercise →](../6-CAPSTONE-EXERCISE/).
+in the [Complete Practice Exercise →](../6-COMPLETE-PRACTICE-EXERCISE/).
 
 ## Next
 
-### [Capstone Exercise: refactor an e-commerce checkout system →](../6-CAPSTONE-EXERCISE/)
+### [Complete Practice Exercise: refactor an e-commerce checkout system →](../6-COMPLETE-PRACTICE-EXERCISE/)

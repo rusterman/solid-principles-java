@@ -1,6 +1,6 @@
 # 3 — Liskov Substitution Principle (LSP)
 
-![Liskov Substitution Principle](images/lsp.webp)
+![Liskov Substitution Principle](../images/lsp.webp)
 
 > Subtypes must be substitutable for their base types, without breaking the correctness of
 > the program.
@@ -92,6 +92,15 @@ javac Main.java && java Main
 cd examples/02-good-example
 javac Main.java && java Main
 ```
+
+## 🏋️ Practice exercise
+
+Once the examples above make sense, apply LSP yourself on a fresh scenario:
+
+### [Exercise: Shape Area Calculator →](./exercise/)
+
+Fix the classic `Square extends Rectangle` violation so substituting one shape for another
+can never silently produce the wrong area.
 
 ## Next
 

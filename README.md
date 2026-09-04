@@ -4,10 +4,10 @@
 
 A structured set of Java exercises on the **SOLID** principles, organized by principle. Each
 numbered lesson folder contains a **theory README**, worked **examples** (a "bad" version and
-a "good," refactored version you can read and run), and a hands-on **capstone exercise** at
-the end that ties all five principles into one realistic system. Written for developers who
-already know OOP basics (classes, interfaces, inheritance) and are ready to learn how to
-*design* with them.
+a "good," refactored version you can read and run), and its own **practice exercise** you
+solve yourself. A final [Complete Practice Exercise](./6-COMPLETE-PRACTICE-EXERCISE/) ties all
+five principles into one realistic system. Written for developers who already know OOP basics
+(classes, interfaces, inheritance) and are ready to learn how to *design* with them.
 
 This repository is the SOLID chapter of a broader **Code Quality** track (Code Review, Clean
 Code, SOLID, Design Patterns) — it focuses on SOLID specifically, in depth.
@@ -22,8 +22,9 @@ noise, not through focused, deliberate practice. Without that structure, it's ea
 confused about SOLID for far longer than necessary.
 
 This repo exists to fix that: each principle gets its own theory, a bad/good example pair you
-run yourself, and a shared capstone exercise that forces you to actually *apply* all five,
-deliberately, before you ever have to reach for them under deadline pressure on the job.
+run yourself, and its own practice exercise — plus a final exercise that forces you to apply
+all five together, deliberately, before you ever have to reach for them under deadline
+pressure on the job.
 
 **SOLID is not a checklist to memorize. It's a set of answers to "why did this code become
 hard to change?"**
@@ -53,59 +54,63 @@ here.
 
 ## Learning path
 
-The material is organized progressively — each lesson builds toward the capstone exercise.
+The material is organized progressively — each lesson builds toward the final, combined
+exercise.
 
 ### [1. Single Responsibility Principle →](./1-SINGLE-RESPONSIBILITY-PRINCIPLE/)
 
 A class should have only one reason to change. Splitting validation, persistence, and
-notification out of one bloated `UserService`.
+notification out of one bloated `UserService` — then practicing it yourself on an invoicing
+system.
 
 ### [2. Open/Closed Principle →](./2-OPEN-CLOSED-PRINCIPLE/)
 
 Open for extension, closed for modification. Replacing an `if`/`else` payment dispatcher with
-a `Payment` interface.
+a `Payment` interface — then practicing it yourself on a customer discount calculator.
 
 ### [3. Liskov Substitution Principle →](./3-LISKOV-SUBSTITUTION-PRINCIPLE/)
 
 Subtypes must be safely substitutable for their base type. The classic `Bird`/`Penguin`
-example, and why `fly()` shouldn't live on `Bird` at all.
+example — then practicing it yourself on the equally classic `Square`/`Rectangle` problem.
 
 ### [4. Interface Segregation Principle →](./4-INTERFACE-SEGREGATION-PRINCIPLE/)
 
 Don't force classes to implement methods they don't need. Splitting a fat `Worker` interface
-into `Workable` and `Eatable`.
+into `Workable` and `Eatable` — then practicing it yourself on an office printer fleet.
 
 ### [5. Dependency Inversion Principle →](./5-DEPENDENCY-INVERSION-PRINCIPLE/)
 
 Depend on abstractions, not concrete classes. Injecting a `MessageService` interface into
-`Notification` instead of constructing `EmailService` directly.
+`Notification` — then practicing it yourself on a swappable order-storage backend.
 
-### [6. Capstone Exercise →](./6-CAPSTONE-EXERCISE/)
+### [6. Complete Practice Exercise →](./6-COMPLETE-PRACTICE-EXERCISE/)
 
-Refactor a monolithic e-commerce checkout system by applying all five principles, one stage
-at a time — with reference solutions for each stage.
+Refactor a monolithic e-commerce checkout system by applying all five principles together, one
+stage at a time — with reference solutions for each stage.
 
 ## Structure
 
 ```csv
-images/                               overview image used by this root README
-1-SINGLE-RESPONSIBILITY-PRINCIPLE/    one reason to change, per class
-2-OPEN-CLOSED-PRINCIPLE/              extend behavior without editing what already works
-3-LISKOV-SUBSTITUTION-PRINCIPLE/      subtypes that never break their base type's promises
-4-INTERFACE-SEGREGATION-PRINCIPLE/    small, focused interfaces over one fat interface
-5-DEPENDENCY-INVERSION-PRINCIPLE/     depend on abstractions, inject the concrete details
-6-CAPSTONE-EXERCISE/                  all five principles applied to one system, step by step
+images/                                overview image used by this root README
+1-SINGLE-RESPONSIBILITY-PRINCIPLE/     one reason to change, per class
+2-OPEN-CLOSED-PRINCIPLE/               extend behavior without editing what already works
+3-LISKOV-SUBSTITUTION-PRINCIPLE/       subtypes that never break their base type's promises
+4-INTERFACE-SEGREGATION-PRINCIPLE/     small, focused interfaces over one fat interface
+5-DEPENDENCY-INVERSION-PRINCIPLE/      depend on abstractions, inject the concrete details
+6-COMPLETE-PRACTICE-EXERCISE/          all five principles applied to one system, step by step
 ```
 
-Each principle folder follows the same shape, with its own `images/` folder:
+Each principle folder follows the same shape:
 
 ```csv
 N-PRINCIPLE-NAME/
 ├── README.md                  theory: the idea, a bad example, a good example, how to spot it
-├── images/                    the diagram used by this folder's README
-└── examples/
-    ├── 01-bad-example/Main.java    the violation, runnable
-    └── 02-good-example/Main.java   the fix, runnable
+├── examples/
+│   ├── 01-bad-example/Main.java    the violation, runnable
+│   └── 02-good-example/Main.java   the fix, runnable
+└── exercise/
+    ├── README.md                   a fresh scenario: goal, task, acceptance criteria
+    └── Starter.java                the code you refactor yourself (no solution provided)
 ```
 
 ## Setup and requirements
@@ -169,20 +174,27 @@ git remote -v   # origin = your fork, upstream = original
 ## How to work through this guide
 
 1. **Go in lesson order** — `1-SINGLE-RESPONSIBILITY-PRINCIPLE` → ... →
-   `5-DEPENDENCY-INVERSION-PRINCIPLE` → `6-CAPSTONE-EXERCISE`. Each principle is easier to see
-   clearly once you've internalized the one before it.
+   `5-DEPENDENCY-INVERSION-PRINCIPLE` → `6-COMPLETE-PRACTICE-EXERCISE`. Each principle is
+   easier to see clearly once you've internalized the one before it.
 2. **Read the lesson's `README.md` first** — the idea, the bad example, the good example, and
    how to recognize the violation in code you didn't write.
 3. **Run both examples.** Don't just read the diff — compile and execute `01-bad-example` and
    `02-good-example`, then change something and re-run it.
-4. **Finish with the capstone exercise.** Attempt each refactor stage yourself before opening
-   the matching file under `6-CAPSTONE-EXERCISE/solutions/`.
+4. **Do the lesson's practice exercise** in `exercise/` before moving on — a *new* scenario,
+   with no reference solution, so you're actually applying the idea, not retyping it.
+5. **Finish with the Complete Practice Exercise.** Attempt each refactor stage yourself before
+   opening the matching file under `6-COMPLETE-PRACTICE-EXERCISE/solutions/`.
 
-### Build & run any example
+### Build & run any example or exercise
 
 ```sh
 cd 1-SINGLE-RESPONSIBILITY-PRINCIPLE/examples/02-good-example
 javac Main.java && java Main
+```
+
+```sh
+cd 1-SINGLE-RESPONSIBILITY-PRINCIPLE/exercise
+javac Starter.java && java Starter
 ```
 
 ### Rules for learning
@@ -191,26 +203,37 @@ javac Main.java && java Main
   problem before you see the fix.
 - **Don't memorize the five names.** If you can explain *why* a piece of code is painful to
   change, you already understand the principle behind the fix.
-- **Don't skip the capstone.** The individual lessons show you *one* principle in isolation;
-  the exercise is where you practice recognizing *which* principle a real problem needs.
+- **Don't skip a lesson's exercise.** The bad/good example shows you *how*; the exercise, on a
+  scenario you haven't seen before, tests whether you understand *why*.
+- **Don't skip the Complete Practice Exercise.** The individual lessons show you *one*
+  principle in isolation; this is where you practice recognizing *which* principle a real
+  problem needs.
 
 ## Submitting your solutions
 
-Use one branch per person, named after your GitHub username, so your capstone attempt is easy
-to find and never collides with anyone else's fork history:
+Use one branch per person, named after your GitHub username, so your work is easy to find and
+never collides with anyone else's fork history:
 
 | Step | Command |
 |------|---------|
 | Create your solution branch | `git checkout -b solutions/<your-username>` |
-| Work locally, commit per stage | `git add .`<br>`git commit -m "capstone: stage 1 - SRP refactor"` |
+| Work locally, commit per exercise | `git add .`<br>`git commit -m "exercise: SRP - invoice system"` |
 | Push your branch to your fork | `git push -u origin solutions/<your-username>` |
 
-Replace `<your-username>` with your actual GitHub username. Commit each capstone stage
-separately (`capstone: stage 1 - SRP`, `capstone: stage 2 - OCP`, ...) so your progress is easy
-to follow, and try each stage yourself before opening the matching file in
-[`6-CAPSTONE-EXERCISE/solutions/`](./6-CAPSTONE-EXERCISE/solutions/). Once pushed, you can open
-a pull request from `solutions/<your-username>` into your own fork's `main` for a clean,
-reviewable diff of your work.
+Replace `<your-username>` with your actual GitHub username. Commit each exercise separately
+with a clear message:
+
+- Per-principle exercises: `exercise: <PRINCIPLE> - <short description>` (e.g.
+  `exercise: OCP - customer discount calculator`)
+- Complete Practice Exercise stages: `final-exercise: stage <N> - <short description>` (e.g.
+  `final-exercise: stage 1 - SRP refactor`)
+
+Try each exercise yourself before opening its reference material (there is none for the
+per-principle exercises — that's the point; the
+[`6-COMPLETE-PRACTICE-EXERCISE/solutions/`](./6-COMPLETE-PRACTICE-EXERCISE/solutions/) folder
+does have reference solutions, stage by stage). Once pushed, you can open a pull request from
+`solutions/<your-username>` into your own fork's `main` for a clean, reviewable diff of your
+work.
 
 ---
 
@@ -230,10 +253,13 @@ agree?* That's the difference between reciting principles and designing with the
 
 ### [5. Dependency Inversion Principle →](./5-DEPENDENCY-INVERSION-PRINCIPLE/)
 
-### [6. Capstone Exercise →](./6-CAPSTONE-EXERCISE/)
+### [6. Complete Practice Exercise →](./6-COMPLETE-PRACTICE-EXERCISE/)
 
-## Author
+## Contributors
 
-Created and maintained by [Rustam Atakisiev](https://github.com/rusterman) — also the author
-of the companion [cpp-oop-examples-and-exercises](https://github.com/rusterman/cpp-oop-examples-and-exercises)
-repository.
+| Contributor | Role |
+|---|---|
+| [Rustam Atakisiev](https://github.com/rusterman) | Creator & maintainer — also the author of the companion [cpp-oop-examples-and-exercises](https://github.com/rusterman/cpp-oop-examples-and-exercises) repository |
+
+Want to contribute? Fork the repo, follow the [Submitting your solutions](#submitting-your-solutions)
+workflow above, and open a pull request.

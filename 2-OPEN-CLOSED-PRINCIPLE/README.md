@@ -1,6 +1,6 @@
 # 2 — Open/Closed Principle (OCP)
 
-![Open/Closed Principle](images/ocp.webp)
+![Open/Closed Principle](../images/ocp.webp)
 
 > Software entities should be **open for extension**, but **closed for modification**.
 
@@ -101,6 +101,15 @@ javac Main.java && java Main
 cd examples/02-good-example
 javac Main.java && java Main
 ```
+
+## 🏋️ Practice exercise
+
+Once the examples above make sense, apply OCP yourself on a fresh scenario:
+
+### [Exercise: Customer Discount Calculator →](./exercise/)
+
+Turn a growing `if`/`else` discount lookup into a `DiscountPolicy` abstraction that new
+customer tiers can plug into, with zero changes to existing code.
 
 ## Next
 

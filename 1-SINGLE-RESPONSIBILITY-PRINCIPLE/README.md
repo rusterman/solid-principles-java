@@ -1,6 +1,6 @@
 # 1 — Single Responsibility Principle (SRP)
 
-![Single Responsibility Principle](images/srp.webp)
+![Single Responsibility Principle](../images/srp.webp)
 
 > A class should have only one reason to change.
 
@@ -117,6 +117,15 @@ javac Main.java && java Main
 cd examples/02-good-example
 javac Main.java && java Main
 ```
+
+## 🏋️ Practice exercise
+
+Once the examples above make sense, apply SRP yourself on a fresh scenario:
+
+### [Exercise: Invoice System →](./exercise/)
+
+Split a single do-everything `Invoice` class into a calculator, a printer, a storage class,
+and a mailer — each with one job.
 
 ## Next
 

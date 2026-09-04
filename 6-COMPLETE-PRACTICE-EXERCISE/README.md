@@ -1,6 +1,6 @@
-# 6 — Capstone Exercise: E-Commerce Checkout Refactor
+# 6 — Complete Practice Exercise: E-Commerce Checkout Refactor
 
-![SOLID Principles](images/solid.webp)
+![SOLID Principles](../images/solid.webp)
 
 ## 🎯 Goal
 
@@ -14,8 +14,10 @@ You will:
 3. Refactor step-by-step: **SRP → OCP → LSP → ISP → DIP**
 4. End with a clean, extensible, testable architecture
 
-This is the exercise every previous lesson has been building toward — if `1` through `5`
-were the individual tools, this is the project where you use all of them together.
+This is the exercise every previous lesson has been building toward. If you've done the
+per-principle practice exercise in each of `1` through `5`, you've already applied each tool
+on its own — this is the project where you use all five together, on one system, and learn to
+recognize *which* principle a real problem needs without being told.
 
 ## 📦 Problem definition (realistic requirements)
 

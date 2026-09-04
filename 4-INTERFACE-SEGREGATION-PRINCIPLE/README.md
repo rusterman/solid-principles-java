@@ -1,6 +1,6 @@
 # 4 — Interface Segregation Principle (ISP)
 
-![Interface Segregation Principle](images/isp.png)
+![Interface Segregation Principle](../images/isp.png)
 
 > Clients should not be forced to depend on methods they do not use.
 
@@ -97,6 +97,15 @@ javac Main.java && java Main
 cd examples/02-good-example
 javac Main.java && java Main
 ```
+
+## 🏋️ Practice exercise
+
+Once the examples above make sense, apply ISP yourself on a fresh scenario:
+
+### [Exercise: Office Printer Fleet →](./exercise/)
+
+Split a fat `MultiFunctionDevice` interface so a print-only device is never forced to fake
+scanning or faxing.
 
 ## Next
 
