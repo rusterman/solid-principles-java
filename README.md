@@ -1,4 +1,4 @@
-# SOLID Principles — Theory & Practice (Java)
+# SOLID Principles in Java — Theory, Examples & Exercises
 
 ![SOLID Principles](solid.webp)
 
@@ -17,6 +17,11 @@ Code, SOLID, Design Patterns) — it focuses on SOLID specifically, in depth.
 **SOLID is not a checklist to memorize. It's a set of answers to "why did this code become
 hard to change?"**
 
+Before jumping into Design Patterns, it's far more valuable to learn and practice **SOLID**
+first — Design Patterns, Domain-Driven Design (DDD), and Clean Architecture are all built on
+top of these five ideas. SOLID is harder to grasp than plain OOP, but once it actually clicks,
+everything that comes after it gets dramatically easier to understand.
+
 Every principle here exists to fix a concrete, recurring pain:
 
 - Code that's scary to touch because one class does too much → **SRP**
@@ -25,11 +30,12 @@ Every principle here exists to fix a concrete, recurring pain:
 - An interface so bloated that half its methods are faked or throw → **ISP**
 - Business logic welded to database/email/HTTP details, impossible to test → **DIP**
 
-**Master OOP first, and SOLID becomes much easier to internalize** — these principles assume
-you're already comfortable with classes, interfaces, and polymorphism. If you need that
-foundation first, see
+**Prerequisite: know OOP well first.** These principles assume you're already comfortable
+with classes, interfaces, and polymorphism — SOLID is what comes *after* OOP, not instead of
+it. If you need that foundation first, start with
 [cpp-oop-examples-and-exercises](https://github.com/rusterman/cpp-oop-examples-and-exercises),
-the companion OOP fundamentals repo this one follows in spirit and structure.
+the companion OOP fundamentals repo this one follows in spirit and structure, then come back
+here.
 
 > **Don't just learn the five letters. Learn to recognize the pain each one solves — that's
 > what lets you apply them without a cheat sheet.**
@@ -166,3 +172,9 @@ agree?* That's the difference between reciting principles and designing with the
 ### [5. Dependency Inversion Principle →](./5-DEPENDENCY-INVERSION-PRINCIPLE/)
 
 ### [6. Capstone Exercise →](./6-CAPSTONE-EXERCISE/)
+
+## Author
+
+Created and maintained by [Rustam Atakisiev](https://github.com/rusterman) — also the author
+of the companion [cpp-oop-examples-and-exercises](https://github.com/rusterman/cpp-oop-examples-and-exercises)
+repository.
