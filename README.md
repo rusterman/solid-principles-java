@@ -121,17 +121,54 @@ javac -version
 
 ## Getting started
 
-New to Git/GitHub/forking? The prerequisite
+New to Git/GitHub? The prerequisite
 [cpp-oop-examples-and-exercises](https://github.com/rusterman/cpp-oop-examples-and-exercises#setup-and-requirements)
-repo walks through what each of those is. The short version, for this repo:
+repo explains what each concept below actually is. Here's the order that gets you from zero to
+a working local copy:
 
-### 1. Fork the repository
+### 1. Install Git
+
+**macOS**
+
+```bash
+brew install git
+```
+
+**Windows**
+
+Download and run the installer: [git-scm.com/download/win](https://git-scm.com/download/win),
+accepting the defaults.
+
+**Ubuntu / Debian**
+
+```bash
+sudo apt update && sudo apt install -y git
+```
+
+Verify it worked (any platform):
+
+```bash
+git --version
+```
+
+### 2. Initialize your Git identity (one-time, per machine)
+
+Git stamps every commit with a name and email — set these once, using the same email
+that's verified on your GitHub account (otherwise your commits won't be linked to your
+profile there):
+
+```bash
+git config --global user.name  "Your Name"
+git config --global user.email "you@example.com"
+```
+
+### 3. Fork the repository
 
 Click **Fork** on [github.com/rusterman/solid-principles-java](https://github.com/rusterman/solid-principles-java)
 to create your own copy under your GitHub account. You'll work and commit inside your fork,
 not the original.
 
-### 2. Clone your fork
+### 4. Clone your fork
 
 Replace `<your-username>` with your GitHub username:
 
