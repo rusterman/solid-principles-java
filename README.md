@@ -162,74 +162,31 @@ git config --global user.name  "Your Name"
 git config --global user.email "you@example.com"
 ```
 
-### 3. Connect Git to GitHub
+### 3. Install the GitHub CLI and log in
 
-You need this so `git push` can actually authenticate as you later — GitHub no longer
-accepts your account password over Git. Pick **one** of the two options below.
-
-**Option A — SSH (recommended, set up once, works forever)**
+The simplest way to connect Git to GitHub — no SSH keys, no manual tokens:
 
 ```bash
-ssh-keygen -t ed25519 -C "you@example.com"   # press Enter to accept all defaults
+brew install gh          # macOS
+# or: winget install --id GitHub.cli        (Windows)
+# or: sudo apt install gh                   (Ubuntu/Debian)
+
+gh auth login
 ```
 
-Then start the agent and add the key to it:
+Pick **GitHub.com** → **HTTPS** → **Login with a web browser**, and follow the prompt. That's
+it — `git push`/`git pull` now work without asking for a password.
+
+### 4. Fork and clone the repository
 
 ```bash
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-```
-
-Print your **public** key and copy the whole output:
-
-```bash
-cat ~/.ssh/id_ed25519.pub
-```
-
-On GitHub: **Settings → SSH and GPG keys → New SSH key**, paste it in, save. Verify it worked:
-
-```bash
-ssh -T git@github.com
-# "Hi <your-username>! You've successfully authenticated..." means you're set.
-```
-
-**Option B — HTTPS with a Personal Access Token**
-
-On GitHub: **Settings → Developer settings → Personal access tokens → Tokens (classic) →
-Generate new token**, check the `repo` scope, generate, and copy it immediately (you won't
-see it again). The first time you `git push` over HTTPS, use your GitHub **username** and
-paste this **token** as the password — Git will remember it afterward via your OS's
-credential manager.
-
-### 4. Fork the repository
-
-Click **Fork** on [github.com/rusterman/solid-principles-java](https://github.com/rusterman/solid-principles-java)
-to create your own copy under your GitHub account. You'll work and commit inside your fork,
-not the original.
-
-### 5. Clone your fork
-
-Replace `<your-username>` with your GitHub username. Use the SSH URL if you set up Option A,
-or the HTTPS URL if you set up Option B:
-
-```bash
-# SSH (Option A)
-git clone git@github.com:<your-username>/solid-principles-java.git
-
-# HTTPS (Option B)
-git clone https://github.com/<your-username>/solid-principles-java.git
-```
-
-```bash
+gh repo fork rusterman/solid-principles-java --clone=true
 cd solid-principles-java
 ```
 
-Optionally, add the original repo as `upstream` so you can pull in future updates:
-
-```bash
-git remote add upstream https://github.com/rusterman/solid-principles-java.git
-git remote -v   # origin = your fork, upstream = original
-```
+This creates your own copy on GitHub and clones it to your machine in one step. `origin` is
+your fork; `upstream` is the original repo, added automatically so you can pull in future
+updates.
 
 ## How to work through this guide
 
