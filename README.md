@@ -162,18 +162,65 @@ git config --global user.name  "Your Name"
 git config --global user.email "you@example.com"
 ```
 
-### 3. Fork the repository
+### 3. Connect Git to GitHub
+
+You need this so `git push` can actually authenticate as you later — GitHub no longer
+accepts your account password over Git. Pick **one** of the two options below.
+
+**Option A — SSH (recommended, set up once, works forever)**
+
+```bash
+ssh-keygen -t ed25519 -C "you@example.com"   # press Enter to accept all defaults
+```
+
+Then start the agent and add the key to it:
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+Print your **public** key and copy the whole output:
+
+```bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+On GitHub: **Settings → SSH and GPG keys → New SSH key**, paste it in, save. Verify it worked:
+
+```bash
+ssh -T git@github.com
+# "Hi <your-username>! You've successfully authenticated..." means you're set.
+```
+
+**Option B — HTTPS with a Personal Access Token**
+
+On GitHub: **Settings → Developer settings → Personal access tokens → Tokens (classic) →
+Generate new token**, check the `repo` scope, generate, and copy it immediately (you won't
+see it again). The first time you `git push` over HTTPS, use your GitHub **username** and
+paste this **token** as the password — Git will remember it afterward via your OS's
+credential manager.
+
+### 4. Fork the repository
 
 Click **Fork** on [github.com/rusterman/solid-principles-java](https://github.com/rusterman/solid-principles-java)
 to create your own copy under your GitHub account. You'll work and commit inside your fork,
 not the original.
 
-### 4. Clone your fork
+### 5. Clone your fork
 
-Replace `<your-username>` with your GitHub username:
+Replace `<your-username>` with your GitHub username. Use the SSH URL if you set up Option A,
+or the HTTPS URL if you set up Option B:
 
 ```bash
+# SSH (Option A)
+git clone git@github.com:<your-username>/solid-principles-java.git
+
+# HTTPS (Option B)
 git clone https://github.com/<your-username>/solid-principles-java.git
+```
+
+```bash
 cd solid-principles-java
 ```
 
