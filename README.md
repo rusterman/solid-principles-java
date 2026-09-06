@@ -121,10 +121,7 @@ javac -version
 
 ## Getting started
 
-New to Git/GitHub? The prerequisite
-[cpp-oop-examples-and-exercises](https://github.com/rusterman/cpp-oop-examples-and-exercises#setup-and-requirements)
-repo explains what each concept below actually is. Here's the order that gets you from zero to
-a working local copy:
+New to this? Follow these steps **in order** — one command block at a time, top to bottom.
 
 ### 1. Install Git
 
@@ -134,9 +131,7 @@ a working local copy:
 brew install git
 ```
 
-**Windows**
-
-Download and run the installer: [git-scm.com/download/win](https://git-scm.com/download/win),
+**Windows**: download and run [git-scm.com/download/win](https://git-scm.com/download/win),
 accepting the defaults.
 
 **Ubuntu / Debian**
@@ -145,48 +140,58 @@ accepting the defaults.
 sudo apt update && sudo apt install -y git
 ```
 
-Verify it worked (any platform):
+### 2. Set up Git on your computer
 
-```bash
-git --version
-```
-
-### 2. Initialize your Git identity (one-time, per machine)
-
-Git stamps every commit with a name and email — set these once, using the same email
-that's verified on your GitHub account (otherwise your commits won't be linked to your
-profile there):
+Run this once, ever, on your machine (use the same email as your GitHub account):
 
 ```bash
 git config --global user.name  "Your Name"
 git config --global user.email "you@example.com"
 ```
 
-### 3. Install the GitHub CLI and log in
-
-The simplest way to connect Git to GitHub — no SSH keys, no manual tokens:
+### 3. Connect Git to your GitHub account
 
 ```bash
-brew install gh          # macOS
-# or: winget install --id GitHub.cli        (Windows)
-# or: sudo apt install gh                   (Ubuntu/Debian)
-
+brew install gh    # Windows: winget install --id GitHub.cli   |   Linux: sudo apt install gh
 gh auth login
 ```
 
-Pick **GitHub.com** → **HTTPS** → **Login with a web browser**, and follow the prompt. That's
-it — `git push`/`git pull` now work without asking for a password.
+Answer the prompts: **GitHub.com** → **HTTPS** → **Login with a web browser**. A page opens —
+log in there, then come back to the terminal. Done, just once.
 
-### 4. Fork and clone the repository
+### 4. Fork this repository
+
+Go to [github.com/rusterman/solid-principles-java](https://github.com/rusterman/solid-principles-java)
+and click **Fork** (top-right button) → **Create fork**. This makes your own copy, under your
+GitHub account, that you're allowed to write to.
+
+### 5. Clone your fork to your computer
+
+Replace `<your-username>` with your GitHub username:
 
 ```bash
-gh repo fork rusterman/solid-principles-java --clone=true
+git clone https://github.com/<your-username>/solid-principles-java.git
 cd solid-principles-java
 ```
 
-This creates your own copy on GitHub and clones it to your machine in one step. `origin` is
-your fork; `upstream` is the original repo, added automatically so you can pull in future
-updates.
+### 6. Connect the original repo, so you can pull future updates
+
+```bash
+git remote add upstream https://github.com/rusterman/solid-principles-java.git
+```
+
+### 7. Make your changes, then push them to your fork
+
+Do this every time you finish an exercise:
+
+```bash
+git checkout -b solutions/<your-username>   # once, the first time
+git add .
+git commit -m "exercise: SRP - invoice system"
+git push -u origin solutions/<your-username>
+```
+
+Your work is now saved on GitHub, in your fork, on a branch named after you.
 
 ## How to work through this guide
 
@@ -229,17 +234,9 @@ javac Starter.java && java Starter
 
 ## Submitting your solutions
 
-Use one branch per person, named after your GitHub username, so your work is easy to find and
-never collides with anyone else's fork history:
-
-| Step | Command |
-|------|---------|
-| Create your solution branch | `git checkout -b solutions/<your-username>` |
-| Work locally, commit per exercise | `git add .`<br>`git commit -m "exercise: SRP - invoice system"` |
-| Push your branch to your fork | `git push -u origin solutions/<your-username>` |
-
-Replace `<your-username>` with your actual GitHub username. Commit each exercise separately
-with a clear message:
+You already set up your `solutions/<your-username>` branch in
+[Getting started](#7-make-your-changes-then-push-them-to-your-fork) — push to it every time
+you finish an exercise. Commit each exercise separately, with a clear message:
 
 - Per-principle exercises: `exercise: <PRINCIPLE> - <short description>` (e.g.
   `exercise: OCP - customer discount calculator`)
