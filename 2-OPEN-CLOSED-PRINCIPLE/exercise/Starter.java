@@ -1,34 +1,44 @@
-// OCP Practice Exercise — starter code. Refactor this so adding a new
-// customer tier never requires editing DiscountCalculator again.
-// See README.md in this folder for the full task and requirements.
+interface DiscountPolicy {
+    double apply(double amount);
+}
 
-class DiscountCalculator {
-    public double getDiscount(String customerType) {
-        if (customerType.equals("regular")) {
-            return 0.0;
-        } else if (customerType.equals("premium")) {
-            return 0.10;
-        } else if (customerType.equals("vip")) {
-            return 0.20;
-        }
-        return 0.0;
+class RegularCustomerDiscount implements DiscountPolicy {
+    public double apply(double amount){
+        return amount - (amount * 0.0);
     }
 }
 
-public class Starter {
+class PremiumCustomerDiscount implements DiscountPolicy {
+    public double apply(double amount){
+        return amount - (amount * 0.1);
+    }
+}
+
+class VipCustomerDiscount implements DiscountPolicy {
+    public double apply(double amount){
+       return amount - (amount * 0.2);
+    }
+}
+
+class PricingService {
+    void process(DiscountPolicy discount, double amount){
+        discount.apply(amount);
+        System.out.println(discount.apply(amount));
+    }
+}
+
+class Main {
     public static void main(String[] args) {
-        DiscountCalculator calculator = new DiscountCalculator();
-        double amount = 200.0;
+        PricingService ser = new PricingService();
+        ser.process(new VipCustomerDiscount(), 20);
 
-        double regularDiscount = calculator.getDiscount("regular");
-        double premiumDiscount = calculator.getDiscount("premium");
-        double vipDiscount = calculator.getDiscount("vip");
+        DiscountPolicy StudentCustomerDiscount = new DiscountPolicy() {
+            public double apply(double amount){
+               return amount - (amount * 0.15);
+            }
+        };
 
-        System.out.println("Regular pays: " + (amount - amount * regularDiscount));
-        System.out.println("Premium pays: " + (amount - amount * premiumDiscount));
-        System.out.println("VIP pays: " + (amount - amount * vipDiscount));
-
-        // Marketing just asked for a "student" tier at 15% off.
-        // Can you add it without touching DiscountCalculator?
+        PricingService ser2 = new PricingService();
+        ser2.process(StudentCustomerDiscount, 20);
     }
 }
